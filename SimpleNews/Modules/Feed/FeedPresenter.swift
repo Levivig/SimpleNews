@@ -17,6 +17,12 @@ final class FeedPresenter {
     private unowned let view: FeedViewInterface
     private let interactor: FeedInteractorInterface
     private let wireframe: FeedWireframeInterface
+    
+    private var items: [[NewsArticle]] = [] {
+        didSet {
+            view.reload()
+        }
+    }
 
     // MARK: - Lifecycle -
 
@@ -25,9 +31,41 @@ final class FeedPresenter {
         self.interactor = interactor
         self.wireframe = wireframe
     }
+
+    func viewDidLoad() {
+        loadData()
+    }
+    
+    private func loadData() {
+        interactor.getNews { [weak self]  result in
+            switch result {
+            case .success(let data):
+                self?.items = [data.articles]
+            case .failure(let error):
+                self?.wireframe.showErrorAlert(with: error.localizedDescription)
+            }
+        }
+    }
 }
 
 // MARK: - Extensions -
 
 extension FeedPresenter: FeedPresenterInterface {
+    func numberOfSections() -> Int {
+        items.count
+    }
+    
+    func numberOfItems(in section: Int) -> Int {
+        items[section].count
+    }
+    
+    func itemAt(indexPath: IndexPath) -> NewsArticle {
+        items[indexPath.section][indexPath.row]
+    }
+    
+    func didSelectItemAt(indexPath: IndexPath) {
+        let item = items[indexPath.section][indexPath.row]
+        log.debug(item)
+    }
+    
 }

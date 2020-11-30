@@ -43,17 +43,21 @@ class RestClient {
                 
                 log.debug(response.debugDescription)
                 
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .useDefaultKeys
+                decoder.dateDecodingStrategy = .iso8601
+                
                 switch response.result {
                 case .success(let data):
-                    if let object = try? JSONDecoder().decode(T.self, from: data) {
+                    if let object = try? decoder.decode(T.self, from: data) {
                         log.debug("success: \(String(describing: response.request?.url))")
                         completion?(Result.success(object))
-                    } else if let error = try? JSONDecoder().decode(APIError.self, from: data) {
+                    } else if let error = try? decoder.decode(APIError.self, from: data) {
                         log.warning("\(error)")
                         completion?(Result.failure(error))
                     }
                 case .failure(let error):
-                    if let data = response.data,let apiError = try? JSONDecoder().decode(APIError.self, from: data) {
+                    if let data = response.data,let apiError = try? decoder.decode(APIError.self, from: data) {
                         log.warning("\(apiError)")
                         completion?(Result.failure(apiError))
                     } else {

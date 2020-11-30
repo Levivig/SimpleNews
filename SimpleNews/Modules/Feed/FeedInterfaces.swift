@@ -14,10 +14,17 @@ protocol FeedWireframeInterface: WireframeInterface {
 }
 
 protocol FeedViewInterface: ViewInterface {
+    func reload()
 }
 
 protocol FeedPresenterInterface: PresenterInterface {
+    func numberOfSections() -> Int
+    func numberOfItems(in section: Int) -> Int
+    func itemAt(indexPath: IndexPath) -> NewsArticle
+    
+    func didSelectItemAt(indexPath: IndexPath)
 }
 
 protocol FeedInteractorInterface: InteractorInterface {
+    func getNews(completion: NewsArticlesLoaded?)
 }

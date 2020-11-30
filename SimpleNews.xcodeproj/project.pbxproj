@@ -49,6 +49,9 @@
 		1B2BB3B1257567B1001B232B /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2BB3B0257567B1001B232B /* StringExtensions.swift */; };
 		1B2BB3E225756EA3001B232B /* NewsArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2BB3E125756EA3001B232B /* NewsArticle.swift */; };
 		1B2BB3E525756EBE001B232B /* NewsSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2BB3E425756EBE001B232B /* NewsSource.swift */; };
+		1B2BB3EA25757008001B232B /* RestClient+News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2BB3E925757008001B232B /* RestClient+News.swift */; };
+		1B2BB3ED2575701A001B232B /* NewsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2BB3EC2575701A001B232B /* NewsResponse.swift */; };
+		1B2BB3F125757855001B232B /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2BB3F025757855001B232B /* FeedCell.swift */; };
 		1BB2479223E6ED0500EBFD39 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB2479123E6ED0500EBFD39 /* APIError.swift */; };
 		1BB2479523E6EE8000EBFD39 /* DataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB2479423E6EE8000EBFD39 /* DataExtensions.swift */; };
 		1BDD46A223AFFEAE0020AC54 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDD46A123AFFEAE0020AC54 /* Constants.swift */; };
@@ -101,6 +104,9 @@
 		1B2BB3B0257567B1001B232B /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		1B2BB3E125756EA3001B232B /* NewsArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsArticle.swift; sourceTree = "<group>"; };
 		1B2BB3E425756EBE001B232B /* NewsSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSource.swift; sourceTree = "<group>"; };
+		1B2BB3E925757008001B232B /* RestClient+News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RestClient+News.swift"; sourceTree = "<group>"; };
+		1B2BB3EC2575701A001B232B /* NewsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsResponse.swift; sourceTree = "<group>"; };
+		1B2BB3F025757855001B232B /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		1BB2479123E6ED0500EBFD39 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		1BB2479423E6EE8000EBFD39 /* DataExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtensions.swift; sourceTree = "<group>"; };
 		1BDD46A123AFFEAE0020AC54 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -269,6 +275,7 @@
 			isa = PBXGroup;
 			children = (
 				1B0BFB62233632C60054E28A /* RestClient.swift */,
+				1B2BB3E925757008001B232B /* RestClient+News.swift */,
 			);
 			path = RestClient;
 			sourceTree = "<group>";
@@ -317,6 +324,14 @@
 			path = Localization;
 			sourceTree = "<group>";
 		};
+		1B2BB3EF25757838001B232B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				1B2BB3F025757855001B232B /* FeedCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		1BB2479323E6EE6E00EBFD39 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
@@ -340,6 +355,7 @@
 				1BB2479123E6ED0500EBFD39 /* APIError.swift */,
 				1B2BB3E125756EA3001B232B /* NewsArticle.swift */,
 				1B2BB3E425756EBE001B232B /* NewsSource.swift */,
+				1B2BB3EC2575701A001B232B /* NewsResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -347,6 +363,7 @@
 		1BDD46A023AFFCBA0020AC54 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1B2BB3EF25757838001B232B /* Cells */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -521,10 +538,12 @@
 				1B2BB3962575667A001B232B /* FavoritesInterfaces.swift in Sources */,
 				1B2BB3A62575668C001B232B /* AboutWireframe.swift in Sources */,
 				1B0BFB3C23362A000054E28A /* InteractorInterface.swift in Sources */,
+				1B2BB3ED2575701A001B232B /* NewsResponse.swift in Sources */,
 				1B0BFB3A23362A000054E28A /* UIStoryboardExtension.swift in Sources */,
 				1B0BFB4723362B740054E28A /* BaseTabbarProtocolController.swift in Sources */,
 				1B2BB3A32575668C001B232B /* AboutPresenter.swift in Sources */,
 				1B0BFB4A23362ECE0054E28A /* TabbarProtocol.swift in Sources */,
+				1B2BB3EA25757008001B232B /* RestClient+News.swift in Sources */,
 				1B2BB3982575667A001B232B /* FavoritesViewController.swift in Sources */,
 				1B0BFB592336303F0054E28A /* TabbarWireframe.swift in Sources */,
 				1B2BB3B1257567B1001B232B /* StringExtensions.swift in Sources */,
@@ -537,6 +556,7 @@
 				1B0BFB3923362A000054E28A /* ViewInterface.swift in Sources */,
 				1B0BFB63233632C60054E28A /* RestClient.swift in Sources */,
 				1B2BB3A42575668C001B232B /* AboutViewController.swift in Sources */,
+				1B2BB3F125757855001B232B /* FeedCell.swift in Sources */,
 				1B0BFB3E23362A000054E28A /* PresenterInterface.swift in Sources */,
 				1B2BB38E25756667001B232B /* FeedWireframe.swift in Sources */,
 				1B2BB38C25756667001B232B /* FeedViewController.swift in Sources */,

@@ -16,4 +16,8 @@ final class FeedInteractor {
 // MARK: - Extensions -
 
 extension FeedInteractor: FeedInteractorInterface {
+    func getNews(completion: NewsArticlesLoaded?) {
+        RestClient.shared.loadTopHeadlines(completion: completion)
+    }
+    
 }

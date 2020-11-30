@@ -19,11 +19,38 @@ final class FeedViewController: BaseTabbarProtocolController {
     override var selectedTabbarImage: UIImage? { UIImage(systemName: "list.dash")?.withTintColor(.black, renderingMode: .alwaysOriginal) }
 
     var presenter: FeedPresenterInterface!
+    
+    // MARK: - Private properties -
+    
+    private var collectionView: UICollectionView!
 
     // MARK: - Lifecycle -
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setup()
+        presenter.viewDidLoad()
+    }
+    
+    // MARK: - Initialization -
+    
+    private func setup() {
+        initCollectionView()
+    }
+    
+    private func initCollectionView() {
+        let layout = UICollectionViewFlowLayout()
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        
+        collectionView.register(cellWithClass: FeedCell.self)
+
+        view.addSubview(collectionView)
+        collectionView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
 
 }
@@ -31,4 +58,32 @@ final class FeedViewController: BaseTabbarProtocolController {
 // MARK: - Extensions -
 
 extension FeedViewController: FeedViewInterface {
+    func reload() {
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
+    }
+}
+
+extension FeedViewController: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        presenter.numberOfSections()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        presenter.numberOfItems(in: section)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withClass: FeedCell.self, for: indexPath)
+        let model = presenter.itemAt(indexPath: indexPath)
+        cell.bind(model: model)
+        return cell
+    }
+}
+
+extension FeedViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        presenter.didSelectItemAt(indexPath: indexPath)
+    }
 }
