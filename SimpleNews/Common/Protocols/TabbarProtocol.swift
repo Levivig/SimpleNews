@@ -9,6 +9,8 @@
 import UIKit
 
 protocol TabbarProtocol {
+    
+    var tabbarTitle: String? { get }
     var tabbarImage: UIImage? { get }
     var selectedTabbarImage: UIImage? { get }
     

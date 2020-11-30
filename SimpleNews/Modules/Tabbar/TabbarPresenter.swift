@@ -42,9 +42,9 @@ extension TabbarPresenter: TabbarPresenterInterface {
     
     func setupViewControllers() -> [UIViewController] {
         let controllers: [UIViewController] = [
-            FeedWireframe().viewController,
-            FavoritesWireframe().viewController,
-            AboutWireframe().viewController
+            BaseNavigationController(rootViewController: FeedWireframe().viewController),
+            BaseNavigationController(rootViewController: FavoritesWireframe().viewController),
+            BaseNavigationController(rootViewController: AboutWireframe().viewController)
         ]
         
         return controllers

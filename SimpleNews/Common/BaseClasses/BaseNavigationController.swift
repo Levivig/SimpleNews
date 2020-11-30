@@ -10,6 +10,8 @@ import UIKit
 
 class BaseNavigationController: UINavigationController {
     
+    // MARK: - Initialization -
+    
     init() {
         super.init(nibName: nil, bundle: nil)
         setup()
@@ -26,6 +28,18 @@ class BaseNavigationController: UINavigationController {
     }
     
     private func setup() {
-        
+        setNavigationBarHidden(true, animated: false)
+    }
+}
+
+extension BaseNavigationController: TabbarProtocol {
+    
+    var tabbarTitle: String? { (viewControllers.first as? TabbarProtocol)?.tabbarTitle }
+    var tabbarImage: UIImage? { (viewControllers.first as? TabbarProtocol)?.tabbarImage }
+    var selectedTabbarImage: UIImage? { (viewControllers.first as? TabbarProtocol)?.selectedTabbarImage }
+    
+    func setTabbarItem() {
+        (viewControllers.first as? TabbarProtocol)?.setTabbarItem()
+        tabBarItem = viewControllers.first?.tabBarItem
     }
 }
