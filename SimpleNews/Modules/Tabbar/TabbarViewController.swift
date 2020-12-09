@@ -28,6 +28,8 @@ final class TabbarViewController: UITabBarController {
     
     private func setup() {
         delegate = self
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.gray], for: .normal)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.mainTintColor], for: .selected)
     }
 	
 }

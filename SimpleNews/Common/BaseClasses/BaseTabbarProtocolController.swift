@@ -22,7 +22,5 @@ class BaseTabbarProtocolController: BaseViewController, TabbarProtocol {
         tabBarItem = UITabBarItem(title: tabbarTitle,
                                   image: tabbarImage?.withTintColor(.gray, renderingMode: .alwaysOriginal),
                                   selectedImage: selectedTabbarImage?.withTintColor(.mainTintColor, renderingMode: .alwaysOriginal))
-        tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.mainTintColor], for: .selected)
-        tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.gray], for: .normal)
     }
 }
