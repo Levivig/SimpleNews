@@ -16,6 +16,9 @@ struct Constants {
     static let newsBaseUrl = "https://newsapi.org/v2"
     static let newsApiKey = "51f93ce2c64d41629a9f7085b558e6ed"
     
+    static let codeYardURL = "https://codeyard.eu"
+    static let githubRepoUrl = "https://github.com/Levivig/SimpleNews"
+    
     struct UserDefaults {
         static let ApiKey = "ApiKey"
     }

@@ -49,7 +49,7 @@ final class AboutViewController: BaseTabbarProtocolController {
         titleLabel.textAlignment = .center
         titleLabel.numberOfLines = 1
 
-        titleLabel.text = "WorkoutBuddy".localized
+        titleLabel.text = "SimpleNews".localized
 
         view.addSubview(titleLabel)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -60,7 +60,11 @@ final class AboutViewController: BaseTabbarProtocolController {
     }
 
     private func iniIimageView() {
-        imageView.image = UIImage(named: "wb-icon")
+        imageView.image = UIImage(named: "sn-icon")
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+        imageView.addGestureRecognizer(tap)
+        imageView.isUserInteractionEnabled = true
 
         view.addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -79,6 +83,10 @@ final class AboutViewController: BaseTabbarProtocolController {
         descriptionLabel.textAlignment = .center
         descriptionLabel.numberOfLines = 4
         descriptionLabel.text = "AboutDescription".localized
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(descriptionLabelTapped))
+        descriptionLabel.addGestureRecognizer(tap)
+        descriptionLabel.isUserInteractionEnabled = true
 
         view.addSubview(descriptionLabel)
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -103,6 +111,20 @@ final class AboutViewController: BaseTabbarProtocolController {
         mask.path = UIBezierPath(roundedRect: view.bounds, cornerRadius: 40.0).cgPath
         // Apply the mask to the view
         imageView.layer.mask = mask
+    }
+    
+    // MARK: - Action -
+    
+    @objc private func imageTapped() {
+        if let url = URL(string: Constants.githubRepoUrl) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+    }
+    
+    @objc private func descriptionLabelTapped() {
+        if let url = URL(string: Constants.codeYardURL) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
     }
 
 }
