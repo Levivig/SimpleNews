@@ -53,25 +53,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         appController.saveAppModel()
     }
-    
-    // MARK: - Notifications -
-    
-    private func registerForNotifications() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .alert, .sound]) { granted, error in
-            log.debug("Notification settings: \(granted)")
-            log.debug(String(describing: error?.localizedDescription))
-        }
-        UIApplication.shared.registerForRemoteNotifications()
-    }
-    
-    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        let tokenString = deviceToken.tokenString()
-        log.verbose(tokenString)
-    }
-}
-
-extension AppDelegate: UNUserNotificationCenterDelegate {
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        completionHandler()
-    }
 }
