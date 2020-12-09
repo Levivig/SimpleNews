@@ -108,6 +108,7 @@ final class DetailViewController: BaseViewController {
         scrollView = UIScrollView()
         scrollView.contentInsetAdjustmentBehavior = .never
         scrollView.delegate = self
+        scrollView.backgroundColor = .systemBackground
         
         view.addSubview(scrollView)
         scrollView.snp.makeConstraints { make in
