@@ -19,11 +19,90 @@ final class AboutViewController: BaseTabbarProtocolController {
     override var selectedTabbarImage: UIImage? { UIImage(systemName: "person.fill") }
 
     var presenter: AboutPresenterInterface!
+    
+    // MARK: - Private properties -
+    
+    private var titleLabel = UILabel()
+    private var imageView = UIImageView()
+    private var descriptionLabel = UILabel()
 
     // MARK: - Lifecycle -
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setup()
+    }
+    
+    // MARK: - Initialization -
+    
+    private func setup() {
+        view.backgroundColor = .systemBackground
+
+        initTitleLabel()
+        iniIimageView()
+        initDescriptionLabel()
+    }
+
+    private func initTitleLabel() {
+        titleLabel.font = UIFont.preferredFont(forTextStyle: .title1)
+        titleLabel.textColor = .label
+        titleLabel.textAlignment = .center
+        titleLabel.numberOfLines = 1
+
+        titleLabel.text = "WorkoutBuddy".localized
+
+        view.addSubview(titleLabel)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+    }
+
+    private func iniIimageView() {
+        imageView.image = UIImage(named: "wb-icon")
+
+        view.addSubview(imageView)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            imageView.widthAnchor.constraint(equalToConstant: 150),
+            imageView.heightAnchor.constraint(equalToConstant: 150),
+            imageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20)
+        ])
+    }
+
+    private func initDescriptionLabel() {
+        descriptionLabel.font = UIFont.preferredFont(forTextStyle: .footnote)
+        descriptionLabel.textColor = .secondaryLabel
+        descriptionLabel.textAlignment = .center
+        descriptionLabel.numberOfLines = 4
+        descriptionLabel.text = "AboutDescription".localized
+
+        view.addSubview(descriptionLabel)
+        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            descriptionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            descriptionLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
+        ])
+    }
+
+    // MARK: - Layout -
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let size = imageView.frame.size
+        let view = UIView(frame: CGRect(origin: .zero, size: size))
+        // Creating the layer that we'll use as a mask
+        let mask = CAShapeLayer()
+        // Set its frame to the view bounds
+        mask.frame = view.bounds
+        // Build its path with a smoothed shape
+        mask.path = UIBezierPath(roundedRect: view.bounds, cornerRadius: 40.0).cgPath
+        // Apply the mask to the view
+        imageView.layer.mask = mask
     }
 
 }

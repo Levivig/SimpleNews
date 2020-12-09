@@ -53,6 +53,7 @@ final class FavoritesViewController: BaseTabbarProtocolController {
     // MARK: - Initialization -
     
     private func setup() {
+        view.backgroundColor = .systemBackground
         initNavigation()
         initCollectionView()
         initEmptyView()

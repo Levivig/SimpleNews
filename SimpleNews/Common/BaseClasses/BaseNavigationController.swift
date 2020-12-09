@@ -33,6 +33,7 @@ class BaseNavigationController: UINavigationController {
     
     private func setup() {
         setNavigationBarHidden(true, animated: false)
+        navigationBar.tintColor = .mainTintColor
         navigationBar.prefersLargeTitles = true
     }
 }

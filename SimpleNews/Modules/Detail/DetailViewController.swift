@@ -96,12 +96,12 @@ final class DetailViewController: BaseViewController {
     }
     
     private func resetNavigationBar() {
-        navigationController?.navigationBar.tintColor = .systemBlue
+        navigationController?.navigationBar.tintColor = .mainTintColor
         navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
         navigationController?.navigationBar.shadowImage = nil
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.view.backgroundColor = nil
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.label]
     }
     
     private func initScrollView() {
@@ -178,7 +178,7 @@ final class DetailViewController: BaseViewController {
     
     private func initBottomWrapperView() {
         bottomWrapperView = UIView()
-        bottomWrapperView.backgroundColor = .systemGray
+        bottomWrapperView.backgroundColor = .systemBackground
         
         scrollView.addSubview(bottomWrapperView)
         bottomWrapperView.snp.makeConstraints { make in
@@ -190,7 +190,7 @@ final class DetailViewController: BaseViewController {
     
     private func initDescriptionLabel() {
         descriptionLabel = UILabel()
-        descriptionLabel.textColor = .white
+        descriptionLabel.textColor = .label
         descriptionLabel.font = UIFont.preferredFont(forTextStyle: .body)
         descriptionLabel.numberOfLines = 0
         

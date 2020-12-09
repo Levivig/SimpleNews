@@ -20,3 +20,7 @@ struct Constants {
         static let ApiKey = "ApiKey"
     }
 }
+
+extension UIColor {
+    static let mainTintColor: UIColor = UIColor(hex: 0xe4a63c) ?? .systemBlue
+}

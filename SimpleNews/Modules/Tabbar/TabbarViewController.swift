@@ -20,8 +20,14 @@ final class TabbarViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        delegate = self
+        setup()
         presenter.viewDidLoad()
+    }
+    
+    // MARK: - Initialization -
+    
+    private func setup() {
+        delegate = self
     }
 	
 }

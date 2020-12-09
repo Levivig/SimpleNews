@@ -26,7 +26,7 @@ class ReadButton: UIControl {
     }
     
     private func setup() {
-        backgroundColor = UIColor(hex: 0xe4a63c)
+        backgroundColor = .mainTintColor
         initTitleLabel()
     }
     

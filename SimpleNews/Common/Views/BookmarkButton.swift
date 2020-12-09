@@ -106,11 +106,11 @@ class BookmarkButton: UIControl {
                            initialSpringVelocity: 7,
                            options: .allowUserInteraction,
                            animations: {
-                            self.imageView.image = UIImage(systemName: imageName)?.withTintColor(.systemYellow, renderingMode: .alwaysOriginal)
+                            self.imageView.image = UIImage(systemName: imageName)?.withTintColor(.mainTintColor, renderingMode: .alwaysOriginal)
                             self.transform = .identity
                            }, completion: nil)
         } else {
-            self.imageView.image = UIImage(systemName: imageName)?.withTintColor(.systemYellow, renderingMode: .alwaysOriginal)
+            self.imageView.image = UIImage(systemName: imageName)?.withTintColor(.mainTintColor, renderingMode: .alwaysOriginal)
         }
     }
     
