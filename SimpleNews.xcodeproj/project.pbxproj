@@ -62,7 +62,6 @@
 		1B2BB3EA25757008001B232B /* RestClient+News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2BB3E925757008001B232B /* RestClient+News.swift */; };
 		1B2BB3ED2575701A001B232B /* NewsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2BB3EC2575701A001B232B /* NewsResponse.swift */; };
 		1B2BB3F125757855001B232B /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2BB3F025757855001B232B /* FeedCell.swift */; };
-		1B2BB3FF25757A6D001B232B /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2BB3FE25757A6D001B232B /* DBManager.swift */; };
 		1BAB21AF258154C2009870B1 /* ReadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAB21AE258154C2009870B1 /* ReadButton.swift */; };
 		1BAB21B225815C52009870B1 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAB21B125815C52009870B1 /* UIViewControllerExtensions.swift */; };
 		1BB2479223E6ED0500EBFD39 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB2479123E6ED0500EBFD39 /* APIError.swift */; };
@@ -137,7 +136,6 @@
 		1B2BB3E925757008001B232B /* RestClient+News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RestClient+News.swift"; sourceTree = "<group>"; };
 		1B2BB3EC2575701A001B232B /* NewsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsResponse.swift; sourceTree = "<group>"; };
 		1B2BB3F025757855001B232B /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
-		1B2BB3FE25757A6D001B232B /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		1BAB21AE258154C2009870B1 /* ReadButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadButton.swift; sourceTree = "<group>"; };
 		1BAB21B125815C52009870B1 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		1BB2479123E6ED0500EBFD39 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
@@ -214,9 +212,9 @@
 			isa = PBXGroup;
 			children = (
 				1B0BFB2E233629630054E28A /* Initializers */,
+				1B034D76257D566800DA4238 /* AppController.swift */,
 				1B0BFAFB233628850054E28A /* AppDelegate.swift */,
 				1BDD46A123AFFEAE0020AC54 /* Constants.swift */,
-				1B034D76257D566800DA4238 /* AppController.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -323,7 +321,6 @@
 		1B0BFB5E233632830054E28A /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				1B2BB3FC25757A5C001B232B /* Database */,
 				1B0BFB5F2336328D0054E28A /* RestClient */,
 			);
 			path = Services;
@@ -402,14 +399,6 @@
 				1B2BB3F025757855001B232B /* FeedCell.swift */,
 			);
 			path = Cells;
-			sourceTree = "<group>";
-		};
-		1B2BB3FC25757A5C001B232B /* Database */ = {
-			isa = PBXGroup;
-			children = (
-				1B2BB3FE25757A6D001B232B /* DBManager.swift */,
-			);
-			path = Database;
 			sourceTree = "<group>";
 		};
 		1BAB21AD258154B6009870B1 /* Views */ = {
@@ -685,7 +674,6 @@
 				1B2BB3F125757855001B232B /* FeedCell.swift in Sources */,
 				1B0BFB3E23362A000054E28A /* PresenterInterface.swift in Sources */,
 				1B2BB38E25756667001B232B /* FeedWireframe.swift in Sources */,
-				1B2BB3FF25757A6D001B232B /* DBManager.swift in Sources */,
 				1B2BB38C25756667001B232B /* FeedViewController.swift in Sources */,
 				1BB2479223E6ED0500EBFD39 /* APIError.swift in Sources */,
 				1B2BB3E525756EBE001B232B /* NewsSource.swift in Sources */,
@@ -844,6 +832,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 48KF4TL849;
 				INFOPLIST_FILE = "$(SRCROOT)/SimpleNews/SupportingFiles/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -866,6 +855,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 48KF4TL849;
 				INFOPLIST_FILE = "$(SRCROOT)/SimpleNews/SupportingFiles/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
