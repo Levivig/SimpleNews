@@ -9,3 +9,5 @@
 "Feed" = "Feed";
 "Favorites" = "Favorites";
 "About" = "About";
+"NoFavorites" = "You don't have any bookmarks!";
+"ReadArticle" = "Read article";

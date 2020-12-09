@@ -15,32 +15,54 @@ final class FeedViewController: BaseTabbarProtocolController {
     // MARK: - Public properties -
     
     override var tabbarTitle: String? { "Feed".localized }
-    override var tabbarImage: UIImage? { UIImage(systemName: "list.dash") }
-    override var selectedTabbarImage: UIImage? { UIImage(systemName: "list.dash")?.withTintColor(.black, renderingMode: .alwaysOriginal) }
+    override var tabbarImage: UIImage? { UIImage(systemName: "book") }
+    override var selectedTabbarImage: UIImage? { UIImage(systemName: "book.fill") }
 
     var presenter: FeedPresenterInterface!
     
     // MARK: - Private properties -
     
     private var collectionView: UICollectionView!
+    private var refreshControl: UIRefreshControl!
+    private var searchController: UISearchController!
 
     // MARK: - Lifecycle -
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        presenter.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter.viewWillAppear(animated: animated)
     }
     
     // MARK: - Initialization -
     
     private func setup() {
+        initNavigation()
         initCollectionView()
+        initRefreshControl()
+        initSearchController()
+    }
+    
+    private func initNavigation() {
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
+        navigationItem.title = "Feed".localized
     }
     
     private func initCollectionView() {
         let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: view.width - 40, height: 200)
+        layout.minimumLineSpacing = 20
+        layout.minimumInteritemSpacing = 20
+        layout.scrollDirection = .vertical
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .systemBackground
         
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -50,6 +72,28 @@ final class FeedViewController: BaseTabbarProtocolController {
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
+        }
+    }
+    
+    private func initRefreshControl() {
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshTriggered), for: .valueChanged)
+        
+        collectionView.refreshControl = refreshControl
+    }
+    
+    private func initSearchController() {
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        navigationItem.searchController = searchController
+    }
+    
+    // MARK: - Action -
+    
+    @objc private func refreshTriggered() {
+        presenter.pullToRefresh { _ in
+            self.refreshControl.endRefreshing()
         }
     }
 
@@ -78,6 +122,7 @@ extension FeedViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withClass: FeedCell.self, for: indexPath)
         let model = presenter.itemAt(indexPath: indexPath)
         cell.bind(model: model)
+        cell.delegate = self
         return cell
     }
 }
@@ -85,5 +130,18 @@ extension FeedViewController: UICollectionViewDataSource {
 extension FeedViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         presenter.didSelectItemAt(indexPath: indexPath)
+    }
+}
+
+extension FeedViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        let text = searchController.searchBar.text
+        presenter.search(for: text)
+    }
+}
+
+extension FeedViewController: FeedCellDelegate {
+    func bookmarkToggled(isOn: Bool, newsUrl: String?) {
+        presenter.toggleBookmark(isOn: isOn, url: newsUrl)
     }
 }

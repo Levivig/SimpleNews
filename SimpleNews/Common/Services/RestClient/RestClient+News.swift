@@ -13,7 +13,7 @@ typealias NewsArticlesLoaded = (NewsArticlesResult) -> Void
 
 extension RestClient {
     
-    func loadTopHeadlines(country: String = "hu", completion: NewsArticlesLoaded?) {
+    func loadTopHeadlines(country: String = "hu", completion: NewsArticlesLoaded? = nil) {
         let url = "\(Constants.newsBaseUrl)/top-headlines?country=\(country)&apiKey=\(Constants.newsApiKey)"
         
         request(url: url) { (result: NewsArticlesResult) in

@@ -17,6 +17,7 @@ let log = SwiftyBeaver.self
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
+    let appController = AppController()
 
     // MARK: - Init -
     
@@ -46,6 +47,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window?.rootViewController = initialController
         self.window?.makeKeyAndVisible()
+    }
+    
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        appController.saveAppModel()
+    }
+    
+    func applicationWillTerminate(_ application: UIApplication) {
+        appController.saveAppModel()
     }
     
     // MARK: - Notifications -

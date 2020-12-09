@@ -10,6 +10,10 @@ import UIKit
 
 class BaseNavigationController: UINavigationController {
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        viewControllers.last?.preferredStatusBarStyle ?? .default
+    }
+    
     // MARK: - Initialization -
     
     init() {
@@ -29,6 +33,7 @@ class BaseNavigationController: UINavigationController {
     
     private func setup() {
         setNavigationBarHidden(true, animated: false)
+        navigationBar.prefersLargeTitles = true
     }
 }
 

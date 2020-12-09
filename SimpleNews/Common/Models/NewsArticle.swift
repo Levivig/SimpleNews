@@ -8,14 +8,20 @@
 
 import Foundation
 
-struct NewsArticle: Codable {
+struct NewsArticle: Codable, Equatable {
+
     var source: NewsSource?
     var author: String?
     var title: String = ""
-    var description: String = ""
+    var description: String? = ""
     var url: String = ""
-    var urlToImage: String = ""
-    var publishedAt: Date
+    var urlToImage: String? = ""
+    var publishedAt: Date?
     var content: String?
     
+    var isBookmark: Bool? = false
+    
+    static func == (lhs: NewsArticle, rhs: NewsArticle) -> Bool {
+        return lhs.url == rhs.url
+    }
 }

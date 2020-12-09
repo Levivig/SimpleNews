@@ -27,13 +27,7 @@ class RestClient {
                                       method: HTTPMethod = .get,
                                       data: [String: Any]? = nil,
                                       completion: ((Result<T, Error>) -> Void)?) {
-        
-        if let apiKey = UserDefaults.standard.string(forKey: Constants.UserDefaults.ApiKey) {
-            // TODO: Modify according to api spec
-            headers["x-api-key"] = apiKey
-            log.debug("x-api-key: \(apiKey)")
-        }
-        
+
         AF.request(url,
                    method: method,
                    parameters: data,

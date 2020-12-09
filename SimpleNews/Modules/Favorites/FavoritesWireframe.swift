@@ -30,4 +30,8 @@ final class FavoritesWireframe: BaseWireframe {
 // MARK: - Extensions -
 
 extension FavoritesWireframe: FavoritesWireframeInterface {
+    func openDetail(with article: NewsArticle) {
+        let detail = DetailWireframe(model: article)
+        navigationController?.pushWireframe(detail)
+    }
 }

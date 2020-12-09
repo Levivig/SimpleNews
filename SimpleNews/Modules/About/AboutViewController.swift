@@ -15,8 +15,8 @@ final class AboutViewController: BaseTabbarProtocolController {
     // MARK: - Public properties -
     
     override var tabbarTitle: String? { "About".localized }
-    override var tabbarImage: UIImage? { UIImage(systemName: "person.2") }
-    override var selectedTabbarImage: UIImage? { UIImage(systemName: "person.2.fill") }
+    override var tabbarImage: UIImage? { UIImage(systemName: "person") }
+    override var selectedTabbarImage: UIImage? { UIImage(systemName: "person.fill") }
 
     var presenter: AboutPresenterInterface!
 

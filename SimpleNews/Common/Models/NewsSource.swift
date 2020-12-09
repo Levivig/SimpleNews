@@ -9,6 +9,10 @@
 import Foundation
 
 struct NewsSource: Codable {
-    var id: String?
+    var idx: String?
     var name: String = ""
+    
+    private enum CodingKeys : String, CodingKey {
+        case name, idx = "id"
+    }
 }
