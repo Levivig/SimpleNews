@@ -16,6 +16,8 @@ protocol FeedWireframeInterface: WireframeInterface {
 
 protocol FeedViewInterface: ViewInterface {
     func reload()
+    func showLoading()
+    func hideLoading()
 }
 
 protocol FeedPresenterInterface: PresenterInterface {

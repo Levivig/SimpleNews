@@ -36,7 +36,11 @@ final class FeedPresenter {
     }
     
     private func loadData(completion: ((Bool) -> Void)? = nil) {
+        if items.isEmpty {
+            view.showLoading()
+        }
         interactor.getNews { [weak self]  result in
+            self?.view.hideLoading()
             switch result {
             case .success(let data):
                 self?.items = data.articles

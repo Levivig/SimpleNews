@@ -25,6 +25,7 @@ final class FeedViewController: BaseTabbarProtocolController {
     private var collectionView: UICollectionView!
     private var refreshControl: UIRefreshControl!
     private var searchController: UISearchController!
+    private var activityIndicator: UIActivityIndicatorView!
 
     // MARK: - Lifecycle -
 
@@ -45,6 +46,7 @@ final class FeedViewController: BaseTabbarProtocolController {
         initCollectionView()
         initRefreshControl()
         initSearchController()
+        initActivityIndicator()
     }
     
     private func initNavigation() {
@@ -89,6 +91,16 @@ final class FeedViewController: BaseTabbarProtocolController {
         navigationItem.searchController = searchController
     }
     
+    private func initActivityIndicator() {
+        activityIndicator = UIActivityIndicatorView(style: .medium)
+        activityIndicator.hidesWhenStopped = true
+        
+        view.addSubview(activityIndicator)
+        activityIndicator.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
+    }
+    
     // MARK: - Action -
     
     @objc private func refreshTriggered() {
@@ -106,6 +118,14 @@ extension FeedViewController: FeedViewInterface {
         DispatchQueue.main.async {
             self.collectionView.reloadData()
         }
+    }
+    
+    func showLoading() {
+        activityIndicator.startAnimating()
+    }
+    
+    func hideLoading() {
+        activityIndicator.stopAnimating()
     }
 }
 
