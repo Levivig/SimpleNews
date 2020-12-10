@@ -15,6 +15,10 @@ final class TabbarViewController: UITabBarController {
     // MARK: - Public properties -
 
     var presenter: TabbarPresenterInterface!
+    
+    // MARK: - Private properties -
+    
+    let generator = UIImpactFeedbackGenerator(style: .light)
 
     // MARK: - Lifecycle -
 
@@ -53,5 +57,9 @@ extension TabbarViewController: TabbarViewInterface {
 extension TabbarViewController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         return true
+    }
+    
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        generator.impactOccurred()
     }
 }
