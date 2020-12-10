@@ -57,12 +57,7 @@ final class FeedViewController: BaseTabbarProtocolController {
     }
     
     private func initCollectionView() {
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: view.width - 40, height: 200)
-        layout.minimumLineSpacing = 20
-        layout.minimumInteritemSpacing = 20
-        layout.scrollDirection = .vertical
-        layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
+        let layout = NewsCollectionViewLayout(viewFrame: view.frame)
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .systemBackground
         
