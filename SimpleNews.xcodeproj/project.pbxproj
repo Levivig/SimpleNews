@@ -62,6 +62,8 @@
 		1B2BB3EA25757008001B232B /* RestClient+News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2BB3E925757008001B232B /* RestClient+News.swift */; };
 		1B2BB3ED2575701A001B232B /* NewsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2BB3EC2575701A001B232B /* NewsResponse.swift */; };
 		1B2BB3F125757855001B232B /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2BB3F025757855001B232B /* FeedCell.swift */; };
+		1B91B74B2582032A005FABFF /* NewsCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B91B74A2582032A005FABFF /* NewsCollectionViewLayout.swift */; };
+		1B91B74F2582041D005FABFF /* Devices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B91B74E2582041D005FABFF /* Devices.swift */; };
 		1BAB21AF258154C2009870B1 /* ReadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAB21AE258154C2009870B1 /* ReadButton.swift */; };
 		1BAB21B225815C52009870B1 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAB21B125815C52009870B1 /* UIViewControllerExtensions.swift */; };
 		1BB2479223E6ED0500EBFD39 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB2479123E6ED0500EBFD39 /* APIError.swift */; };
@@ -136,6 +138,8 @@
 		1B2BB3E925757008001B232B /* RestClient+News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RestClient+News.swift"; sourceTree = "<group>"; };
 		1B2BB3EC2575701A001B232B /* NewsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsResponse.swift; sourceTree = "<group>"; };
 		1B2BB3F025757855001B232B /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
+		1B91B74A2582032A005FABFF /* NewsCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewLayout.swift; sourceTree = "<group>"; };
+		1B91B74E2582041D005FABFF /* Devices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Devices.swift; sourceTree = "<group>"; };
 		1BAB21AE258154C2009870B1 /* ReadButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadButton.swift; sourceTree = "<group>"; };
 		1BAB21B125815C52009870B1 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		1BB2479123E6ED0500EBFD39 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
@@ -215,6 +219,7 @@
 				1B034D76257D566800DA4238 /* AppController.swift */,
 				1B0BFAFB233628850054E28A /* AppDelegate.swift */,
 				1BDD46A123AFFEAE0020AC54 /* Constants.swift */,
+				1B91B74E2582041D005FABFF /* Devices.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -252,6 +257,7 @@
 			children = (
 				1B0BFB3F23362B020054E28A /* BaseClasses */,
 				1BDD469E23AFFCAE0020AC54 /* Extensions */,
+				1B91B74925820316005FABFF /* Layouts */,
 				1BDD469F23AFFCB40020AC54 /* Models */,
 				1B0BFB4823362EBD0054E28A /* Protocols */,
 				1B0BFB5E233632830054E28A /* Services */,
@@ -399,6 +405,14 @@
 				1B2BB3F025757855001B232B /* FeedCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		1B91B74925820316005FABFF /* Layouts */ = {
+			isa = PBXGroup;
+			children = (
+				1B91B74A2582032A005FABFF /* NewsCollectionViewLayout.swift */,
+			);
+			path = Layouts;
 			sourceTree = "<group>";
 		};
 		1BAB21AD258154B6009870B1 /* Views */ = {
@@ -644,6 +658,7 @@
 				1B2BB38B25756667001B232B /* FeedPresenter.swift in Sources */,
 				1B0BFB582336303F0054E28A /* TabbarInterfaces.swift in Sources */,
 				1B2BB3962575667A001B232B /* FavoritesInterfaces.swift in Sources */,
+				1B91B74B2582032A005FABFF /* NewsCollectionViewLayout.swift in Sources */,
 				1B13BC89257D661F00425A5B /* DetailWireframe.swift in Sources */,
 				1B2BB3A62575668C001B232B /* AboutWireframe.swift in Sources */,
 				1B13BC87257D661F00425A5B /* DetailViewController.swift in Sources */,
@@ -667,6 +682,7 @@
 				1B2BB3972575667A001B232B /* FavoritesPresenter.swift in Sources */,
 				1B0BFB4123362B240054E28A /* BaseNavigationController.swift in Sources */,
 				1B0BFB3B23362A000054E28A /* BaseWireframe.swift in Sources */,
+				1B91B74F2582041D005FABFF /* Devices.swift in Sources */,
 				1B2BB39A2575667A001B232B /* FavoritesWireframe.swift in Sources */,
 				1B0BFB3923362A000054E28A /* ViewInterface.swift in Sources */,
 				1B0BFB63233632C60054E28A /* RestClient.swift in Sources */,
@@ -832,7 +848,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 48KF4TL849;
 				INFOPLIST_FILE = "$(SRCROOT)/SimpleNews/SupportingFiles/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -855,7 +871,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 48KF4TL849;
 				INFOPLIST_FILE = "$(SRCROOT)/SimpleNews/SupportingFiles/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

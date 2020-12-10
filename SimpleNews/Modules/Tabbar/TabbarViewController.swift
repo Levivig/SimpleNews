@@ -28,6 +28,7 @@ final class TabbarViewController: UITabBarController {
     
     private func setup() {
         delegate = self
+        tabBar.tintColor = .mainTintColor
     }
 	
 }

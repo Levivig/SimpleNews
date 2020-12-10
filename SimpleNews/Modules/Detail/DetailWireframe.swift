@@ -38,6 +38,7 @@ extension DetailWireframe: DetailWireframeInterface {
         }
         
         let safari = SFSafariViewController(url: safeUrl)
+        safari.preferredControlTintColor = .mainTintColor
         navigationController?.present(safari, animated: true, completion: nil)
     }
 }

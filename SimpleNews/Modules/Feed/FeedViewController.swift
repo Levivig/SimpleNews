@@ -57,14 +57,11 @@ final class FeedViewController: BaseTabbarProtocolController {
     }
     
     private func initCollectionView() {
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: view.width - 40, height: 200)
-        layout.minimumLineSpacing = 20
-        layout.minimumInteritemSpacing = 20
-        layout.scrollDirection = .vertical
-        layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
+        let layout = NewsCollectionViewLayout(viewFrame: view.frame)
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .systemBackground
+        collectionView.contentInsetAdjustmentBehavior = .always
+        collectionView.showsHorizontalScrollIndicator = false
         
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -107,6 +104,15 @@ final class FeedViewController: BaseTabbarProtocolController {
         presenter.pullToRefresh { _ in
             self.refreshControl.endRefreshing()
         }
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(alongsideTransition: { _ in
+            self.collectionView?.collectionViewLayout.invalidateLayout()
+        }, completion: { _ in
+            
+        })
     }
 
 }
