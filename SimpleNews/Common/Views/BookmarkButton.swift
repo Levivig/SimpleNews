@@ -40,6 +40,7 @@ class BookmarkButton: UIControl {
     
     private var imageView = UIImageView()
     private var animationView = AnimationView()
+    private let generator = UINotificationFeedbackGenerator()
     
     // MARK: - Initialization -
     
@@ -59,6 +60,7 @@ class BookmarkButton: UIControl {
     
     private func setup(withBackground: Bool = true) {
         addTarget(self, action: #selector(tapped), for: .touchUpInside)
+        addTarget(self, action: #selector(touchedDown), for: .touchDown)
         
         initBackgroundView(withBackground: withBackground)
         initImageView()
@@ -82,6 +84,10 @@ class BookmarkButton: UIControl {
     
     // MARK: - Action -
     
+    @objc private func touchedDown() {
+        generator.prepare()
+    }
+    
     @objc private func tapped() {
         switch bookmarkState {
         case .selected:
@@ -90,6 +96,7 @@ class BookmarkButton: UIControl {
             set(state: .selected)
         }
         delegate?.bookmarkButtonTapped(isOn: bookmarkState == .selected)
+        generator.notificationOccurred(.success)
     }
     
     // MARK: - Layout -
