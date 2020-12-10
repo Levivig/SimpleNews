@@ -72,6 +72,8 @@ final class FavoritesViewController: BaseTabbarProtocolController {
         let layout = NewsCollectionViewLayout(viewFrame: view.frame)
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .systemBackground
+        collectionView.contentInsetAdjustmentBehavior = .always
+        collectionView.showsHorizontalScrollIndicator = false
         
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -106,6 +108,13 @@ final class FavoritesViewController: BaseTabbarProtocolController {
         emptyView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+    }
+    
+    // MARK: - Layout -
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        collectionView?.collectionViewLayout.invalidateLayout()
     }
     
     // MARK: - Action -
