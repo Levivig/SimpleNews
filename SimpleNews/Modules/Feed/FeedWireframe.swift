@@ -30,4 +30,9 @@ final class FeedWireframe: BaseWireframe {
 // MARK: - Extensions -
 
 extension FeedWireframe: FeedWireframeInterface {
+    func openDetail(with article: NewsArticle) {
+        let detail = DetailWireframe(model: article)
+        navigationController?.pushWireframe(detail)
+    }
+    
 }

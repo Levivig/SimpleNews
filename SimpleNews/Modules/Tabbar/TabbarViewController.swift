@@ -20,8 +20,15 @@ final class TabbarViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        delegate = self
+        setup()
         presenter.viewDidLoad()
+    }
+    
+    // MARK: - Initialization -
+    
+    private func setup() {
+        delegate = self
+        tabBar.tintColor = .mainTintColor
     }
 	
 }
@@ -36,7 +43,7 @@ extension TabbarViewController: TabbarViewInterface {
     func set(controllers: [UIViewController]) {
         viewControllers = controllers
         viewControllers?.forEach({ controller in
-            if let controller = controller as? BaseTabbarProtocolController {
+            if let controller = controller as? TabbarProtocol {
                 controller.setTabbarItem()
             }
         })

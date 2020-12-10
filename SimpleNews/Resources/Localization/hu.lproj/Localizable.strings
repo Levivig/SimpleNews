@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  SimpleNews
+
+  Created by Levente Vig on 2020. 11. 30..
+  Copyright © 2020. levivig. All rights reserved.
+*/
+
+"Feed" = "Hírek";
+"Favorites" = "Könyvjelzők";
+"About" = "Továbbiak";
+"NoFavorites" = "Még nem adtál hozzá könyvjelzőt egyetlen hírhez sem!";
+"ReadArticle" = "Elolvasom a cikket!";
+
+"SimpleNews" = "Simple News";
+"AboutDescription" = "Készült a CodeYard által ❤️";
+

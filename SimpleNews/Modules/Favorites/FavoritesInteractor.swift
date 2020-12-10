@@ -16,4 +16,10 @@ final class FavoritesInteractor {
 // MARK: - Extensions -
 
 extension FavoritesInteractor: FavoritesInteractorInterface {
+    func getFavorites(completion: NewsArticlesLoaded) {
+        var newsResponse = NewsResponse()
+        newsResponse.articles = kAppDelegate.appController.bookmarks
+        completion(Result.success(newsResponse))
+    }
+    
 }

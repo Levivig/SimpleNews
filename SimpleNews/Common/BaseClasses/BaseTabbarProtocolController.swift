@@ -21,8 +21,8 @@ class BaseTabbarProtocolController: BaseViewController, TabbarProtocol {
     func setTabbarItem() {
         tabBarItem = UITabBarItem(title: tabbarTitle,
                                   image: tabbarImage?.withTintColor(.gray, renderingMode: .alwaysOriginal),
-                                  selectedImage: selectedTabbarImage?.withTintColor(.systemBlue, renderingMode: .alwaysOriginal))
-        tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.systemBlue], for: .selected)
+                                  selectedImage: selectedTabbarImage?.withTintColor(.mainTintColor, renderingMode: .alwaysOriginal))
+        tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.mainTintColor], for: .selected)
         tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.gray], for: .normal)
     }
 }

@@ -1,5 +1,9 @@
 PODS:
   - Alamofire (5.2.2)
+  - lottie-ios (3.1.9)
+  - SDWebImage (5.10.0):
+    - SDWebImage/Core (= 5.10.0)
+  - SDWebImage/Core (5.10.0)
   - SnapKit (5.0.1)
   - SwifterSwift (5.0.0):
     - SwifterSwift/AppKit (= 5.0.0)
@@ -25,6 +29,8 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - lottie-ios
+  - SDWebImage
   - SnapKit
   - SwifterSwift
   - SwiftLint
@@ -38,14 +44,18 @@ SPEC REPOS:
     - SwiftyBeaver
   trunk:
     - Alamofire
+    - lottie-ios
+    - SDWebImage
 
 SPEC CHECKSUMS:
   Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
+  lottie-ios: 3a3758ef5a008e762faec9c9d50a39842f26d124
+  SDWebImage: 9169792e9eec3e45bba2a0c02f74bf8bd922d1ee
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwifterSwift: 96f90594b370802f01647c2b1229c74a84ffafee
   SwiftLint: 5553187048b900c91aa03552807681bb6b027846
   SwiftyBeaver: da5e573ad583586c18236324c36900990afe1733
 
-PODFILE CHECKSUM: 64395a2e3b865211e2f1e2efe1ee38293db65ab1
+PODFILE CHECKSUM: c033b6a9ee9b0b17f45a09fc275f2504da78d61f
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.10.0

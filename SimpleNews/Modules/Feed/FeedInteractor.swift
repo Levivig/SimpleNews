@@ -16,4 +16,23 @@ final class FeedInteractor {
 // MARK: - Extensions -
 
 extension FeedInteractor: FeedInteractorInterface {
+    func getNews(completion: NewsArticlesLoaded?) {
+        RestClient.shared.loadTopHeadlines { result in
+            let news = kAppDelegate.appController.news
+            
+            switch result {
+            case .success(let response):
+                kAppDelegate.appController.add(news: response.articles)
+            case .failure(let error):
+                if news.isEmpty {
+                    completion?(Result.failure(error))
+                    return
+                }
+            }
+            var newsResponse = NewsResponse()
+            newsResponse.articles = news
+            completion?(Result.success(newsResponse))
+        }
+    }
+    
 }
