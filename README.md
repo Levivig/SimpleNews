@@ -1,6 +1,12 @@
 # SimpleNews
 
 
+# Testflight
+
+
+https://testflight.apple.com/join/tc8BITsm
+
+
 ## Installation
 
 ```sh
