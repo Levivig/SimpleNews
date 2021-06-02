@@ -7,68 +7,51 @@
 //
 
 import Lottie
+import SwiftUI
 import UIKit
 
-class FavoritesEmptyView: UIView {
+struct EmptyView: View {
+
+    @State var isAnimating: Bool
     
-    // MARK: - Private properties -
-    
-    private var animationView = AnimationView()
-    private var titleLabel = UILabel()
-    
-    // MARK: - Initialization -
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setup()
+    var body: some View {
+        VStack {
+            BookmarkAnimView(isAnimating: $isAnimating).frame(width: 150, height: 150, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            Text("NoFavorites".localized)
+                .foregroundColor(.secondary)
+                .font(.subheadline)
+        }.onAppear(perform: {
+            isAnimating = true
+        }).onDisappear(perform: {
+            isAnimating = false
+        })
     }
+}
+
+struct BookmarkAnimView: UIViewRepresentable {
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    typealias UIViewType = AnimationView
+    @Binding var isAnimating: Bool
     
-    private func setup() {
-//        backgroundColor = .gray
-        initAnimationView()
-        initTitleLabel()
-    }
-    
-    private func initAnimationView() {
+    func makeUIView(context: Context) -> AnimationView {
+        let animationView = AnimationView()
         animationView.animation = Animation.named("bookmark_anim")
         animationView.contentMode = .scaleAspectFit
         animationView.loopMode = .loop
-        
-        addSubview(animationView)
-        animationView.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview().multipliedBy(0.8)
-            make.width.height.equalTo(150)
+        return animationView
+    }
+    
+    func updateUIView(_ uiView: AnimationView, context: Context) {
+        if isAnimating {
+            uiView.play()
+        } else {
+            uiView.stop()
         }
     }
-    
-    private func initTitleLabel() {
-        titleLabel.font = UIFont.preferredFont(forTextStyle: .title2)
-        titleLabel.textColor = .secondaryLabel
-        titleLabel.text = "NoFavorites".localized
-        titleLabel.textAlignment = .center
-        
-        addSubview(titleLabel)
-        titleLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(30)
-            make.centerX.equalToSuperview()
-            make.top.equalTo(animationView.snp.bottom).offset(20)
-            make.bottom.lessThanOrEqualToSuperview().offset(-20)
-        }
+}
+
+struct EmptyView_previews: PreviewProvider {
+    static var previews: some View {
+        EmptyView(isAnimating: true)
     }
-    
-    // MARK: - Public API -
-    
-    func play() {
-        animationView.play()
-    }
-    
-    func stop() {
-        animationView.stop()
-    }
-    
 }
