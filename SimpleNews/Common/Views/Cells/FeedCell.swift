@@ -19,7 +19,7 @@ protocol FeedCellBindable {
     var feedCellUrl: String? { get }
 }
 
-protocol FeedCellDelegate: class {
+protocol FeedCellDelegate: AnyObject {
     func bookmarkToggled(isOn: Bool, newsUrl: String?)
 }
 

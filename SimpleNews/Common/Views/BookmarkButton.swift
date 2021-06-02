@@ -9,7 +9,7 @@
 import Lottie
 import UIKit
 
-protocol BookmarButtonDelegate: class {
+protocol BookmarButtonDelegate: AnyObject {
     func bookmarkButtonTapped(isOn: Bool)
 }
 
